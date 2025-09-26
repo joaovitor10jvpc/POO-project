@@ -1,0 +1,100 @@
+@startuml
+
+skinparam packageStyle rectangle
+skinparam shadowing false
+hide circle
+
+package "Value Objects" {
+  class Date {
+    - int year
+    - int month
+    - int day
+  }
+  class Time {
+    - int hour
+    - int minute
+  }
+  class DateTime {
+    - Date date
+    - Time time
+  }
+  class Duration {
+    - minutes value
+  }
+  class Tag {
+    - Id id
+    - string name
+  }
+}
+
+package "Recurrence" {
+  class RecurrenceRule {
+    - RecurrenceFrequency frequency
+    - int interval
+    - optional<int> count
+    - optional<Date> until
+  }
+}
+
+package "Core" {
+  class Event {
+    - Id id
+    - string title
+    - string description
+    - DateTime start
+    - Duration duration
+    - optional<RecurrenceRule> recurrence
+    - vector<Tag> tags
+    - vector<Id> participantIds
+    - Id ownerId
+  }
+  class Calendar {
+  }
+  class Repository<T> {
+    - unordered_map<Id,T> items
+  }
+}
+
+package "Patterns" {
+  interface IObserver { +update() }
+  class Subject { - vector<IObserver*> observers }
+  interface ICommand { +execute() +undo() }
+  class UndoRedoStack { - stack<ICommand> undo - stack<ICommand> redo }
+  interface ILogger { +info() +warn() +error() }
+  class NullLogger
+    ' Note: ICalendarSerializer has been separated into its own file.
+    interface ICalendarSerializer { +serialize() +deserialize() }
+  interface IStorage { +save() +load() }
+  class JsonSerializer
+  class FileStorage
+}
+
+package "GUI" {
+  interface IView
+  interface ICalendarView
+  interface IInputController
+  interface IGUIFactory
+}
+
+package "Errors" {
+  class AgendaError
+  class NotFoundError
+  class ValidationError
+}
+
+Subject <|-- Calendar
+Event --> RecurrenceRule
+Event --> Tag
+Calendar --> "1" Repository
+UndoRedoStack --> ICommand
+JsonSerializer ..|> ICalendarSerializer
+FileStorage ..|> IStorage
+NullLogger ..|> ILogger
+NotFoundError --|> AgendaError
+ValidationError --|> AgendaError
+
+ICalendarView ..|> IView
+IGUIFactory ..> ICalendarView
+IInputController ..> Calendar
+
+@enduml

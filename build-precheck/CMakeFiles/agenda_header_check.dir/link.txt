@@ -1,0 +1,2 @@
+/usr/bin/ar qc libprecheck_headers.a CMakeFiles/agenda_header_check.dir/design/header_check.cpp.o
+/usr/bin/ranlib libprecheck_headers.a
