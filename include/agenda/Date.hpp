@@ -22,7 +22,15 @@ public:
     int month() const { return month_; }
     int day() const { return day_; }
 
+    // C++20 three-way comparison (synthesizes >, >=, <= in most compilers)
     std::strong_ordering operator<=>(const Date&) const = default;
+    // Provide explicit operators to avoid issues with some toolchains
+    bool operator==(const Date&) const = default;
+    bool operator<(const Date& other) const {
+        if (year_ != other.year_) return year_ < other.year_;
+        if (month_ != other.month_) return month_ < other.month_;
+        return day_ < other.day_;
+    }
 
     std::string toString() const {
         std::ostringstream oss; oss << year_ << '-'

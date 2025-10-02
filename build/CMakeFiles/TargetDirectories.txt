@@ -1,0 +1,8 @@
+/home/joaocosta/p2/POO/build/CMakeFiles/agenda_header_check.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/agenda_cli.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/edit_cache.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/rebuild_cache.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/list_install_components.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/install.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/install/local.dir
+/home/joaocosta/p2/POO/build/CMakeFiles/install/strip.dir

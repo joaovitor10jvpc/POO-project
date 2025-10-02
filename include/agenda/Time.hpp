@@ -20,6 +20,11 @@ public:
     int minute() const { return minute_; }
 
     std::strong_ordering operator<=>(const Time& other) const = default;
+    bool operator==(const Time&) const = default;
+    bool operator<(const Time& other) const {
+        if (hour_ != other.hour_) return hour_ < other.hour_;
+        return minute_ < other.minute_;
+    }
 
     std::string toString() const {
         std::ostringstream oss; oss << std::setw(2) << std::setfill('0') << hour_ << ':'

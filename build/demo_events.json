@@ -1,0 +1,31 @@
+{
+  "events": [
+    {
+      "id": 3,
+      "title": "Revisão POO",
+      "start": { "date": "2025-09-26", "time": "10:00" },
+      "duration_minutes": 90,
+      "owner_id": 2,
+      "description": "Etapa 2",
+      "tags": [{ "id": 3, "name": "trabalho" }, { "id": 4, "name": "importante" }]
+    },
+    {
+      "id": 2,
+      "title": "Almoço",
+      "start": { "date": "2025-09-25", "time": "12:00" },
+      "duration_minutes": 60,
+      "owner_id": 1,
+      "description": "",
+      "tags": [{ "id": 2, "name": "pessoal" }]
+    },
+    {
+      "id": 1,
+      "title": "Daily standup",
+      "start": { "date": "2025-09-25", "time": "09:30" },
+      "duration_minutes": 15,
+      "owner_id": 1,
+      "description": "Time A",
+      "tags": [{ "id": 1, "name": "trabalho" }]
+    }
+  ]
+}
